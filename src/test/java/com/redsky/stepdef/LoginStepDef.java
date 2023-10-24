@@ -25,4 +25,12 @@ public class LoginStepDef {
     @Then("user redirect to homepage")
     public void userRedirectToHomepage() {
     }
+
+    @Then("user stays on the login page")
+    public void userStaysOnTheLoginPage() {
+    }
+
+    @And("user see error message")
+    public void userSeeErrorMessage() {
+    }
 }
