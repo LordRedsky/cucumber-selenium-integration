@@ -1,59 +1,41 @@
 package com.redsky.stepdef;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import com.redsky.BaseTest;
+import com.redsky.page.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class LoginStepDef {
 
-    WebDriver driver;
+public class LoginStepDef extends BaseTest {
 
-    @Before
-    public void beforeTest() {
-        driver = WebDriverManager.chromiumdriver().create();
-    }
-
-    @After
-    public void afterTest() {
-        driver.close();
-    }
-
+    protected LoginPage loginPage;
 
     @Given("user is on login page")
     public void userIsOnLoginPage() {
-        driver.get("https://www.saucedemo.com/");
+        loginPage = new LoginPage(driver);
+        loginPage.goToLoginPage();
     }
 
     @And("user input username with {string}")
     public void userInputUsernameWith(String username) {
-        By usernameInputText = By.cssSelector("input#user-name");
-        driver.findElement(usernameInputText).sendKeys(username);
-
+       loginPage.inputUsername(username);
     }
 
     @And("user input password with {string}")
     public void userInputPasswordWith(String password) {
-        By passwordInputText = By.xpath("//*[@id=\"password\"]");
-        driver.findElement(passwordInputText).sendKeys(password);
+        loginPage.inputPassword(password);
     }
 
     @When("user click login button")
     public void userClickLoginButton() {
-        By loginButton = By.id("login-button");
-        driver.findElement(loginButton).click();
+        loginPage.clickLoginButton();
     }
 
 
     @And("user see error message {string}")
     public void userSeeErrorMessage(String errorMessage) {
-        assertTrue(driver.getPageSource().contains(errorMessage));
+        loginPage.validateErrorAppear(errorMessage);
     }
 }

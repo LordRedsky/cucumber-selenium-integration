@@ -24,32 +24,32 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-test {
-    useJUnitPlatform()
-}
+//test {
+//    useJUnitPlatform()
+//}
 
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
     }
 }
-//
-//def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
-//
-//tasks.register('cucumber') {
-//    description("Running Cucumber Test")
-//    dependsOn assemble, compileTestJava
-//    doLast {
-//        javaexec {
-//            main = "io.cucumber.core.cli.Main"
-//            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-//            args = [
-//                    '--plugin', 'html:reports/index.html',
-//                    '--plugin', 'pretty',
-//                    '--glue', 'com.redsky',
-//                    '--tags', "${tags}",
-//                    'src/test/resources'
-//            ]
-//        }
-//    }
-//}
+
+def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+
+tasks.register('cucumber') {
+    description("Running Cucumber Test")
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'html:reports/index.html',
+                    '--plugin', 'pretty',
+                    '--glue', 'com.redsky',
+                    '--tags', "${tags}",
+                    'src/test/resources'
+            ]
+        }
+    }
+}
