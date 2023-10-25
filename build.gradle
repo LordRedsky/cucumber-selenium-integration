@@ -10,11 +10,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation('org.seleniumhq.selenium:selenium-java:4.5.0')
-    testImplementation('io.github.bonigarcia:webdrivermanager:5.3.0')
+//    testImplementation('org.seleniumhq.selenium:selenium-java:4.5.0')
+//    testImplementation('io.github.bonigarcia:webdrivermanager:5.3.0')
+    implementation 'org.seleniumhq.selenium:selenium-java:4.13.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.5.3'
 
-    testImplementation 'io.cucumber:cucumber-java:7.8.1'
-    testImplementation 'io.cucumber:cucumber-junit:7.8.1'
+    testImplementation 'io.cucumber:cucumber-java:7.14.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.14.0'
 //
 //    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
 //    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
@@ -22,32 +24,32 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-//test {
-//    useJUnitPlatform()
-//}
+test {
+    useJUnitPlatform()
+}
 
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
     }
 }
-
-def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
-
-tasks.register('cucumber') {
-    description("Running Cucumber Test")
-    dependsOn assemble, compileTestJava
-    doLast {
-        javaexec {
-            main = "io.cucumber.core.cli.Main"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = [
-                    '--plugin', 'html:reports/index.html',
-                    '--plugin', 'pretty',
-                    '--glue', 'com.redsky',
-                    '--tags', "${tags}",
-                    'src/test/resources'
-            ]
-        }
-    }
-}
+//
+//def tags = (findProperty('tags') == null) ? 'not @exclude' : findProperty('tags') + ' and not @exclude'
+//
+//tasks.register('cucumber') {
+//    description("Running Cucumber Test")
+//    dependsOn assemble, compileTestJava
+//    doLast {
+//        javaexec {
+//            main = "io.cucumber.core.cli.Main"
+//            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+//            args = [
+//                    '--plugin', 'html:reports/index.html',
+//                    '--plugin', 'pretty',
+//                    '--glue', 'com.redsky',
+//                    '--tags', "${tags}",
+//                    'src/test/resources'
+//            ]
+//        }
+//    }
+//}
