@@ -4,6 +4,7 @@ import com.redsky.BaseTest;
 import com.redsky.page.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 
@@ -34,7 +35,7 @@ public class LoginStepDef extends BaseTest {
     }
 
 
-    @And("user see error message {string}")
+    @Then("user see error message {string}")
     public void userSeeErrorMessage(String errorMessage) {
         loginPage.validateErrorAppear(errorMessage);
     }
