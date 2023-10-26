@@ -18,24 +18,23 @@ public class CheckOutStepDef extends BaseTest {
         checkoutPage.clickSelectedItem(titleProduct);
     }
 
-    @And("user vaidate number of item shows correct number with {string}")
-    public void userVaidateNumberOfItemShowsCorrectNumberWith(String numberOfItem) throws  InterruptedException {
+    @And("user validate number of item shows correct number with {string}")
+    public void userValidateNumberOfItemShowsCorrectNumberWith(String numberOfItem) throws  InterruptedException {
         Thread.sleep(1000);
         checkoutPage.validateNumberOrderItem(numberOfItem);
     }
-
 
     @And("user click cart icon")
     public void userClickCartIcon() throws InterruptedException {
         Thread.sleep(1000);
         checkoutPage.clickCartIcon();
     }
-
-    @And("use chick chechout button")
-    public void useChickChechoutButton() throws  InterruptedException {
+    @And("use click checkout button")
+    public void useClickCheckoutButton() throws  InterruptedException {
         Thread.sleep(2000);
         checkoutPage.clickCheckoutBtn();
     }
+
 
     @And("user click continue")
     public void userClickContinue() {
@@ -49,6 +48,11 @@ public class CheckOutStepDef extends BaseTest {
         String zip_code = shippingData.get("Zip code");
         Thread.sleep(1000);
         checkoutPage.fillInShippingAdress(first_name, last_name, zip_code);
+    }
+
+    @And("user fill in the shipping address with empty data")
+    public void userFillInTheShippingAddressWithEmptyData() {
+        checkoutPage.fillInShippingAdress("", "", "");
     }
 
     @And("user click finish")
@@ -68,4 +72,13 @@ public class CheckOutStepDef extends BaseTest {
         Thread.sleep(1000);
         checkoutPage.validateSuccess();
     }
+
+    @Then("user user see error message {string}")
+    public void userUserSeeErrorMessage(String errorMessage) throws  InterruptedException {
+        Thread.sleep(1000);
+        checkoutPage.validateErrorMessage(errorMessage);
+    }
+
+
+
 }

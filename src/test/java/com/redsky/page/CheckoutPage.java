@@ -94,6 +94,12 @@ public class CheckoutPage {
         assertTrue(notification.isDisplayed());
 //        assertEquals(icon, notification.getText());
     }
+
+    public void validateErrorMessage(String errorMessage) {
+        assertTrue(driver.getPageSource().contains(errorMessage));
+    }
+
+
 }
 
 
