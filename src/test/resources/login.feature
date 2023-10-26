@@ -1,5 +1,6 @@
-@Login
+@web
 Feature: Login
+
 
   @valid-login
   Scenario: Login with valid username and password
