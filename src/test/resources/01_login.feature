@@ -2,7 +2,7 @@
 Feature: Login
 
 
-  @valid-login
+  @positive-test
   Scenario: Login with valid username and password
     Given user is on login page
     And user input username with "standard_user"
@@ -10,7 +10,7 @@ Feature: Login
     When user click login button
     Then user redirect to homepage
 
-  @invalid-login
+  @negative-test
   Scenario: Login with valid username and invalid password
     Given user is on login page
     And user input username with "standard_user"

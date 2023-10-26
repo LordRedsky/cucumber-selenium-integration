@@ -8,6 +8,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions (
         glue = {"com.redsky"},
         features = {"src/test/resources"},
-        plugin = {"pretty"}
+        plugin = {
+                "pretty",
+                "html:reports/test-report-web.html",
+                "json:reports/test-report-web.json"
+        }
 )
 public class CucumberTest {}

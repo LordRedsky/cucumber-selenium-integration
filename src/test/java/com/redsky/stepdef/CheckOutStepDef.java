@@ -46,8 +46,9 @@ public class CheckOutStepDef extends BaseTest {
         String first_name = shippingData.get("First name");
         String last_name = shippingData.get("Last name");
         String zip_code = shippingData.get("Zip code");
-        Thread.sleep(1000);
+
         checkoutPage.fillInShippingAdress(first_name, last_name, zip_code);
+        Thread.sleep(1000);
     }
 
     @And("user fill in the shipping address with empty data")
@@ -59,13 +60,6 @@ public class CheckOutStepDef extends BaseTest {
     public void userClickFinish() {
         checkoutPage.clickFinishBtn();
     }
-
-
-//    @Then("user transaction is successfully and there will appear icon {string}")
-//    public void userTransactionIsSuccessfullyAndThereWillAppearIcon(String iconSuccess) {
-//        checkoutPage.validateSuccess(iconSuccess);
-//    }
-
 
     @Then("user transaction is successfully and there will appear icon Pony Express")
     public void userTransactionIsSuccessfullyAndThereWillAppearIconPonyExpress() throws  InterruptedException {

@@ -92,7 +92,6 @@ public class CheckoutPage {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(successIcon));
         System.out.println(notification.getText());
         assertTrue(notification.isDisplayed());
-//        assertEquals(icon, notification.getText());
     }
 
     public void validateErrorMessage(String errorMessage) {
