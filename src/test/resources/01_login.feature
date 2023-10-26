@@ -1,4 +1,4 @@
-@web
+@login
 Feature: Login
 
 

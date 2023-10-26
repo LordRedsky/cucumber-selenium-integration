@@ -1,4 +1,4 @@
-@web
+@sort
   Feature: Sort Item
 
     @positive-test

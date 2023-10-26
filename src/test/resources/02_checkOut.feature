@@ -1,4 +1,4 @@
-@web
+@checkout
 Feature: Checkout
 
   @positive-test
