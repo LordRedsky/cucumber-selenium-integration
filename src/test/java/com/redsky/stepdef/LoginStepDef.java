@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.sl.In;
 
 
 public class LoginStepDef extends BaseTest {
@@ -19,24 +20,28 @@ public class LoginStepDef extends BaseTest {
     }
 
     @And("user input username with {string}")
-    public void userInputUsernameWith(String username) {
+    public void userInputUsernameWith(String username)throws InterruptedException {
         loginPage.inputUsername(username);
+        Thread.sleep(1000);
     }
 
     @And("user input password with {string}")
-    public void userInputPasswordWith(String password) {
+    public void userInputPasswordWith(String password) throws InterruptedException{
         loginPage.inputPassword(password);
+        Thread.sleep(1000);
     }
 
     @When("user click login button")
-    public void userClickLoginButton() {
+    public void userClickLoginButton() throws InterruptedException {
         loginPage.clickLoginButton();
+        Thread.sleep(1000);
     }
 
 
     @Then("user see error message {string}")
-    public void userSeeErrorMessage(String errorMessage) {
+    public void userSeeErrorMessage(String errorMessage) throws InterruptedException{
         loginPage.validateErrorAppear(errorMessage);
+        Thread.sleep(1000);
     }
 
     @When("user already logged in with valid email")
