@@ -49,4 +49,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3.9.3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        destination_dir: reports
+        publish_dir: ./reports
