@@ -39,4 +39,8 @@ To execute the automated tests, run the following Gradle task:
 ```
 
 ## Test result
+#### Cucumber Test
 ![img.png](img.png)
+
+#### Github Workflow
+![image](https://github.com/LordRedsky/cucumber-selenium-integration/assets/96976057/f2bba7be-a476-4a64-87a7-15a7cd4c7d2e)
